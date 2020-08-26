@@ -1,6 +1,7 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mkmlogin/main.dart';
 import 'package:mkmlogin/model/RegisterResponse.dart';
 import 'package:mkmlogin/model/LoginResponse.dart';
 import 'package:mkmlogin/pages/RegisterPage.dart';
@@ -64,7 +65,10 @@ class LoginPageState extends State<LoginPage> implements UserContract {
   @override
   void onLoginSuccess(LoginResponse response) {
     setState(() => isLoading = false);
+    debugPrint("Successs");
     util.putString(PreferencesUtil.username, response.username);
+    Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (context) => MyHomePage()));
   }
 
   @override

@@ -21,7 +21,7 @@ class UserPresenter {
     LoginRequest req = new LoginRequest();
     req.username = username;
     req.password = password;
-    req.loginTime = 0;
+    req.loginTime = "0";
     rest.login(req).then((LoginResponse response) {
       contract.onLoginSuccess(response);
     }).catchError((Object ex) {

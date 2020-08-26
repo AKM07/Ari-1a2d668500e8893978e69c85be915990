@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:mkmlogin/model/LoginRequest.dart';
 import 'package:mkmlogin/model/LoginResponse.dart';
@@ -14,13 +16,16 @@ class RestDataSource {
   final PreferencesUtil util = locator<PreferencesUtil>();
 
   Future<LoginResponse> login(LoginRequest request) {
+    print("UrlsUtil.LOGIN_URL " + UrlsUtil.LOGIN_URL);
     return networkUtil.post(UrlsUtil.LOGIN_URL, body: {
-      "email": request.username,
+      "username": request.username,
       "password": request.password,
       "loginTime": request.loginTime
     }).then((dynamic res) {
       print("Result : " + res.toString());
       return LoginResponse.fromJson(res);
+    }).catchError((Object ex) {
+      print(ex.toString());
     });
   }
 

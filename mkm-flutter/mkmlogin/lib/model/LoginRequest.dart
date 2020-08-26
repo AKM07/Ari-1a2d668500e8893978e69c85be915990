@@ -6,7 +6,7 @@ part 'LoginRequest.g.dart';
 class LoginRequest {
   String username;
   String password;
-  int loginTime;
+  String loginTime;
 
   LoginRequest({
     this.username,

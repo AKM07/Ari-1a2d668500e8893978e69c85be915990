@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkUtil {
@@ -23,8 +22,9 @@ class NetworkUtil {
 
   Future<dynamic> post(String url,
       {Map<String, String> headers, Map body, encoding}) {
-    debugPrint("body " + body.toString());
-    return http.post(url, body: body).then((http.Response response) {
+    return http
+        .post(url, body: body, headers: headers)
+        .then((http.Response response) {
       final String res = response.body;
       final int statusCode = response.statusCode;
       if (statusCode < 200 || statusCode > 400 || json == null) {

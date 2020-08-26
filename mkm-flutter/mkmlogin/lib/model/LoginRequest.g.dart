@@ -10,7 +10,7 @@ LoginRequest _$LoginRequestFromJson(Map<String, dynamic> json) {
   return LoginRequest(
     username: json['username'] as String,
     password: json['password'] as String,
-    loginTime: json['loginTime'] as int,
+    loginTime: json['loginTime'] as String,
   );
 }
 
