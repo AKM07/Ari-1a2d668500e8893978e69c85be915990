@@ -41,13 +41,12 @@ class Users extends REST_Controller {
 	
 	public function login_post(){
 
-		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result);
+	
+		$username =$this->input->post('username');
+		$password = $this->input->post('password');
+		$loginTime = $this->input->post('loginTime');
 
-		if($result){
-			$username = $result->username;
-			$password = $result->password;
-			$loginTime = $result->loginTime;
+		if(!empty($username) || !empty($password)){
 			$getdata=$this->db->query("select * from user where username='".$username."' ");
 
 			if($getdata->num_rows()){
@@ -101,13 +100,11 @@ class Users extends REST_Controller {
 	}
 
 	public function register_post(){
+		$username =$this->input->post('username');
+		$password = $this->input->post('password');
 
-		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result);
-
-		if($result){
-			$username = $result->username;
-			$password = $result->password;
+		if(!empty($username) || !empty($password)){
+			
 			$getdata=$this->db->query("select * from user where username='".$username."' ");
 
 			if($getdata->num_rows()){
